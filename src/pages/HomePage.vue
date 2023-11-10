@@ -32,6 +32,8 @@ export default {
         :isDetail="false"
       />
     </div>
+
+    <h2>feature</h2>
   </div>
 </template>
 
