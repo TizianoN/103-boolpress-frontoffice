@@ -36,6 +36,8 @@ export default {
     <h2>feature</h2>
 
     <ContactForm />
+
+    <p>Feature Tiziano</p>
   </div>
 </template>
 
