@@ -33,6 +33,8 @@ export default {
         :isDetail="false" />
     </div>
 
+    <h2>feature</h2>
+
     <ContactForm />
   </div>
 </template>
