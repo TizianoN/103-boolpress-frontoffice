@@ -1,9 +1,19 @@
 <script>
+import axios from "axios";
+import { store } from "../data/store";
+import { createHydrationRenderer } from "vue";
+
 export default {
   data() {
     return {
-      title: 'Home Page',
+      title: "Home Page",
+      featuredPosts: [],
     };
+  },
+  created() {
+    axios.get(store.api.baseUrl + "posts-featured").then((response) => {
+      this.featuredPosts = response.data;
+    });
   },
 };
 </script>
