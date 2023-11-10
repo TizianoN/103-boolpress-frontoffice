@@ -13,10 +13,8 @@ export default {
     };
   },
 
-  components: { PostCard },
-
-  methods: {
-    fetchPosts() {
+  computed: {
+    activeFilters() {
       const activeCategories = [];
       const activeTags = [];
 
@@ -28,22 +26,23 @@ export default {
         if (tag.active) activeTags.push(tag.id);
       });
 
-      console.log(activeCategories);
-      console.log(activeTags);
+      return {
+        activeCategories,
+        activeTags,
+      };
+    },
+  },
 
+  components: { PostCard },
+
+  methods: {
+    fetchPosts() {
       axios
-        .post(
-          store.api.baseUrl + 'get-posts-by-filters',
-          {
-            activeCategories,
-            activeTags,
+        .post(store.api.baseUrl + 'get-posts-by-filters', this.activeFilters, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
           },
-          {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-            },
-          }
-        )
+        })
         .then((response) => {
           this.filteredPosts = response.data.data;
         });
@@ -149,4 +148,5 @@ export default {
 .clickable {
   cursor: pointer;
 }
+</style>
 </style>
