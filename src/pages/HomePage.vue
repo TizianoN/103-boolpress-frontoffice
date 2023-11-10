@@ -3,6 +3,7 @@ import axios from "axios";
 import { store } from "../data/store";
 
 import PostCard from "../components/posts/PostCard.vue";
+import ContactForm from "../components/ContactForm.vue";
 
 export default {
   data() {
@@ -16,7 +17,7 @@ export default {
       this.featuredPosts = response.data;
     });
   },
-  components: { PostCard },
+  components: { PostCard, ContactForm },
 };
 </script>
 
@@ -34,6 +35,10 @@ export default {
     </div>
 
     <h2>feature</h2>
+
+    <ContactForm />
+
+    <p>Feature Tiziano</p>
   </div>
 </template>
 
