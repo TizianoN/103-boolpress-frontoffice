@@ -1,22 +1,23 @@
 <script>
-import axios from "axios";
-import { store } from "../data/store";
+import axios from 'axios';
+import { store } from '../data/store';
 
-import PostCard from "../components/posts/PostCard.vue";
+import PostCard from '../components/posts/PostCard.vue';
+import ContactForm from '../components/ContactForm.vue';
 
 export default {
   data() {
     return {
-      title: "Home Page",
+      title: 'Home Page',
       featuredPosts: [],
     };
   },
   created() {
-    axios.get(store.api.baseUrl + "posts-featured").then((response) => {
+    axios.get(store.api.baseUrl + 'posts-featured').then((response) => {
       this.featuredPosts = response.data;
     });
   },
-  components: { PostCard },
+  components: { PostCard, ContactForm },
 };
 </script>
 
@@ -29,9 +30,10 @@ export default {
         v-for="post in featuredPosts"
         :post="post"
         :key="post.id"
-        :isDetail="false"
-      />
+        :isDetail="false" />
     </div>
+
+    <ContactForm />
   </div>
 </template>
 
